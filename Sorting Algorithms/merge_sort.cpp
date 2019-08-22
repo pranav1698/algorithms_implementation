@@ -26,6 +26,9 @@ void merge(int* A, int left, int mid, int right){
 }
 
 void mergeSort(int* A, int left, int right){
+    if(left >= right)
+        return;
+
     int mid= left + (right-left)/2;
 
     mergeSort(A, left, mid);
@@ -45,7 +48,7 @@ void printArray(int A[], int size)
 /* Driver program to test above functions */
 int main() 
 { 
-    int A[] = {12, 11, 13, 5, 6, 7}; 
+    int A[] = {2, 6, 8, 5, 4, 3}; 
     int n = sizeof(A)/sizeof(A[0]); 
   
     printf("Given array is \n"); 
