@@ -8,15 +8,23 @@ int main() {
 		cin >> arr[i];
 	}
 	sort(arr, arr+n);
-	//long smallestAns=arr[n-1] - arr[0];
-	for(int i=0; i<n; i++){
-		if(arr[i] < k){
-			arr[i] = arr[i] + k;
-		} else if(arr[i] > k) {
-			arr[i] = arr[i] - k;
+	long diff=arr[n-1] - arr[0];
+	long small=arr[0] + k;
+	long big=arr[n-1] - k;
+	for(int i=0; i<n-1; i++){
+		long add=arr[i]+k;
+		long subs=arr[i]-k;
+		if(subs>=small || add<=big){
+			continue;
+		} else {
+			if((big-subs)<=(add-small)){
+				small=subs;
+			} else {
+				big=add;
+			}	
 		}
+		
 	}
-	sort(arr, arr+n);
-	long answer = arr[n-1] - arr[0];
-	cout << answer << endl;	
+	long answer=min(diff, (big-small));
+	cout << answer << endl;
 }
