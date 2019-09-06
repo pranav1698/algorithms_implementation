@@ -38,7 +38,8 @@ int longestBitonicSubarray(int *input, int n) {
   for(int i=0; i<n; i++){
     best = max(best, output[i]);
   }
-
+  delete[] diff;
+  delete[] output;
   return best;
 }
 
