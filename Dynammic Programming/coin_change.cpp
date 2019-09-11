@@ -7,7 +7,7 @@ int countWaysToMakeChange(int denominations[], int numDenominations, int value){
 
   output[0][0]=0;
   for(int i=1; i<=value; i++)
-    output[i][0]=0;
+      output[i][0]=0;
   for(int j=1; j<=numDenominations; j++)
     output[0][j] = 1;
   int first, second;
