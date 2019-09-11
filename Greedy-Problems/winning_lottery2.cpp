@@ -1,4 +1,4 @@
-# good problem
+// Important
 #include<bits/stdc++.h>
 using namespace std;
 int main() {
