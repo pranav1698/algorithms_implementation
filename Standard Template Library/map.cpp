@@ -13,7 +13,7 @@ int main(){
 		cout << it->first << " " << it->second << endl;
 
 	m.erase(1);
-	
+
 	for(it=m.begin(); it!=m.end(); it++)
 		cout << it->first << " " << it->second << endl;
 
