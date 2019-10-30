@@ -13,7 +13,7 @@ int num_codesi(int* input, int size){
     }
     if(i > 1){
       int x=input[i-2]*10 + input[i-1];
-      if((x>=10 && x<=26) && i>0){
+      if((x>=10 && x<=26) && i>2){
         output[i] += output[i-2];
       } else if(x>=10 && x<=26) {
         output[i]++;
@@ -21,8 +21,8 @@ int num_codesi(int* input, int size){
     }
     //cout << output[i] << endl;
   }
-  int mod=pow(10,9) + 7;
-  int ans=(int)(output[size]);
+  //int mod=pow(10,9) + 7;
+  int ans=(int)(output[size]%mod);
   delete [] output;
   return ans;
 }
