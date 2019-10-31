@@ -46,3 +46,51 @@ int knapsack(int* weights, int* values, int n, int maxWeight){
   }
   return dp[n][maxWeight];
 }
+
+// int knapsack(int* weights, int* values, int n, int maxWeight){
+//
+//     // matrix to store final result
+//     int mat[2][maxWeight+1];
+//     memset(mat, 0, sizeof(mat));
+//
+//     // iterate through all items
+//     int i = 0;
+//     while (i < n) // one by one traverse each element
+//     {
+//         int j = 0; // traverse all weights j <= W
+//
+//         // if i is odd that mean till now we have odd
+//         // number of elements so we store result in 1th
+//         // indexed row
+//         if (i%2!=0)
+//         {
+//             while (++j <= maxWeight) // check for each value
+//             {
+//                 if (weights[i] <= j) // include element
+//                     mat[1][j] = max(values[i] + mat[0][j-weights[i]],
+//                                     mat[0][j] );
+//                 else           // exclude element
+//                     mat[1][j] = mat[0][j];
+//             }
+//
+//         }
+//
+//         // if i is even that mean till now we have even number
+//         // of elements so we store result in 0th indexed row
+//         else
+//         {
+//             while(++j <= maxWeight)
+//             {
+//                 if (weights[i] <= j)
+//                     mat[0][j] = max(values[i] + mat[1][j-weights[i]],
+//                                      mat[1][j]);
+//                 else
+//                     mat[0][j] = mat[1][j];
+//             }
+//         }
+//         i++;
+//     }
+//
+//     // Return mat[0][W] if n is odd, else mat[1][W]
+//     return (n%2 != 0)? mat[0][maxWeight] : mat[1][maxWeight];
+// }
