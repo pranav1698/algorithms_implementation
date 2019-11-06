@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+include<bits/stdc++.h>
 using namespace std;
 
 int main(){
@@ -9,37 +9,67 @@ int main(){
   cin >> m;
 
 
-  ll dp[2][n+1];
-  for(ll i=0; i<=1; i++)
-    for(ll j=0; j<=n; j++)
-      dp[i][j]=0;
+//   ll dp[2][n+1];
+//   for(ll i=0; i<=1; i++)
+//     for(ll j=0; j<=n; j++)
+//       dp[i][j]=0;
 
-  int flag=1;
-  for(ll i=1; i<=m; i++){
-    ll l, r;
-    cin >> l >> r;
-    for(ll j=1; j<=n; j++){
-      dp[flag][j]=dp[flag^1][j];
-      if(j>=l && j<=r){
-          dp[flag][j] = dp[flag^1][j] + 1;
-      }
-      //cout << dp[flag][j] << " ";
+//   int flag=1;
+//   for(ll i=1; i<=m; i++){
+//     ll l, r;
+//     cin >> l >> r;
+//     for(ll j=1; j<=n; j++){
+//       dp[flag][j]=dp[flag^1][j];
+//       if(j>=l && j<=r){
+//           dp[flag][j] = dp[flag^1][j] + 1;
+//       }
+//       //cout << dp[flag][j] << " ";
+//     }
+//     //cout << endl;
+//     flag = flag^1;
+//   }
+    int start[n];
+    int end[n];
+
+    for(int i=0; i<n; i++){
+        start[i]=0;
+        end[i]=0;
     }
-    //cout << endl;
-    flag = flag^1;
+
+    for(int i=0; i<m; i++){
+        int l, r;
+        cin >> l >> r;
+        start[l-1]=start[l-1] + 1;
+        end[r-1]=end[r-1] + 1;
+    }
+
+    int coins[n];
+    coins[0]=start[0];
+    for(int i=1; i<n; i++){
+      coins[i]=coins[i-1] + start[i] - end[i-1];
+
+    }
+
+    int exact[n];
+    for(int i=0; i<n; i++){
+      exact[i]=0;
+    }
+    for(int i=0; i<n; i++){
+      exact[coins[i]-1] = exact[coins[i]-1] + 1;
+    }
+
+
+    int least[n];
+    least[n-1]=exact[n-1];
+    for(int i=n-2; i>=0; i--){
+      least[i] = least[i+1] + exact[i];
+    }
+
+    ll q;
+    cin >> q;
+    while(q--){
+      ll x;
+      cin >> x;
+      cout << least[x-1] << endl;
+    }
   }
-
-  ll q;
-  cin >> q;
-  for(ll i=0; i<q; i++){
-    ll x;
-    cin >> x;
-    ll count=0;
-    for(ll j=1; j<=n; j++)
-      if(dp[flag^1][j] >= x)
-        count = count +1;
-
-    cout << count << endl;
-  }
-
-}
