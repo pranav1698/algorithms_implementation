@@ -10,7 +10,7 @@ void print_bfs(int** edges, int n, int sv, bool* visited){
         int currentVertice=pendingVertices.front();
         cout << currentVertice << " ";
         pendingVertices.pop();
-        visited[sv]=true;
+    
         for(int i=0; i<n; i++){
             if(i == currentVertice){
                 continue;
@@ -54,13 +54,6 @@ int main() {
         edges[s][f]=1;
     }
     // Adjacency Matrix Printed
-
-    bool* visited= new bool[V];
-    for(int i=0; i<V; i++)
-        visited[i]=false;
-
-    queue <int> b_queue;
-    b_queue.push(0);
     BFS(edges, V);
     return 0;
 }

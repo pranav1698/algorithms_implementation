@@ -16,6 +16,19 @@ void print(int** edges, int n, int sv, bool* visited){
             print(edges, n, i, visited);
         }
     }
+    return;
+}
+
+void DFS(int** edges, int n){
+    bool* visited= new bool[n];
+    for(int i=0; i<n; i++)
+        visited[i]=false;
+
+    for(int i=0; i<n; i++)
+        if(!visited[i])
+            print(edges, n, i, visited);
+
+    delete[] visited;
 }
 
 int main(){
@@ -35,14 +48,9 @@ int main(){
         edges[f][s]=1;
         edges[s][f]=1;
     }
-    // Adjacency matrix is now ready
-    bool* visited = new bool[n];
-    for(int i=0; i<n; i++)
-        visited[i]=false;
 
-    print(edges, n, 0, visited);
+    DFS(edges, n);
     // Delete all the memory
-    delete[] visited;
     for(int i=0; i<n; i++)
         delete[] edges[i];
 
