@@ -31,7 +31,7 @@ void prims(int** edges, int n){
 
         //Explore all the neighbors of minVertex update parent and weight array acc to operation
         for(int j=0; j<n; j++){
-            if(edges[minVertex][j] && !visited[j]){
+            if(edges[minVertex][j]!=0 && !visited[j]){
                 if(weight[j] > edges[minVertex][j]){
                     weight[j] = edges[minVertex][j];
                     parent[j]=minVertex;
