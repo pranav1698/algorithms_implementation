@@ -7,6 +7,13 @@ public:
     int column;
 };
 
+int factorial(int n){
+    if(n==0 || n==1)
+        return 1;
+
+    return n*factorial(n-1);
+}
+
 void dfs(vector<int>* edges, int sv, bool* visited, unordered_set<int>* component){
     visited[sv]=true;
     component->insert(sv);
@@ -77,25 +84,23 @@ int main()
                 if (x >= 0 && y >= 0 && x < n && y < m){
                     if(board[x][y] != 0){
                         int position = board[x][y];
-                        edges[i].push_back(position);
+                        //cout << i << " " << position-1 << endl;
+                        edges[i].push_back(position-1);
                     }
                 }
             }
         }
 
-        // unordered_set<unordered_set<int>*>* components = getComponents(edges, n);
-        // unordered_set<unordered_set<int>*>::iterator it1 = components->begin();
-        // while(it1 != components->end()){
-        //     unordered_set<int>* component = *it1;
-        //     unordered_set<int>::iterator it2= component->begin();
-        //     while(it2 != component->end()){
-        //         cout << (*it2+1) << " ";
-        //         it2++;
-        //     }
-        //     cout << endl;
-        //     it1++;
-        // }
-
+        unordered_set<unordered_set<int>*>* components = getComponents(edges, n);
+        unordered_set<unordered_set<int>*>::iterator it1 = components->begin();
+        int ans=1;
+        while(it1 != components->end()){
+            unordered_set<int>* component = *it1;
+            int len = component->size();
+            ans = ans * factorial(len);
+            it1++;
+        }
+        cout << ans << endl;
     }
 
     return 0;
