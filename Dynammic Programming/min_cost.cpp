@@ -16,7 +16,7 @@ int min_cost2(int** input, int m, int n){
     output[m-1][j] = output[m-1][j+1] + input[m-1][j];
 
   for(int i=m-2; i>=0; i--){
-    for(int j=m-2; j>=0; j--){
+    for(int j=n-2; j>=0; j--){
       output[i][j] = input[i][j] + min(output[i+1][j], min(output[i+1][j+1], output[i][j+1]));
     }
   }
