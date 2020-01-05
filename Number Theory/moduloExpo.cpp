@@ -46,5 +46,4 @@ int main(){
     int b=10;
     int c=5;
     cout << modExpo(a, b, c) << endl;
-    return 0;
 }
