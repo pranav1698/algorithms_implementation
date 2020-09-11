@@ -5,7 +5,7 @@ void merge(int* A, int left, int mid, int right){
     //Store the lefting position of both parts in empty array
     int i=left, j=mid, k=0;
     int temp[right-left+1];
-    
+
     while(i<mid && j<=right){
         if(A[i] <= A[j]){
             temp[k++] = A[i++];
@@ -37,26 +37,26 @@ void mergeSort(int* A, int left, int right){
     merge(A, left, mid+1, right);
 }
 
-void printArray(int A[], int size) 
-{ 
-    int i; 
-    for (i=0; i < size; i++) 
-        printf("%d ", A[i]); 
-    printf("\n"); 
-} 
-  
+void printArray(int A[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", A[i]);
+    printf("\n");
+}
+
 /* Driver program to test above functions */
-int main() 
-{ 
-    int A[] = {2, 6, 8, 5, 4, 3}; 
-    int n = sizeof(A)/sizeof(A[0]); 
-  
-    printf("Given array is \n"); 
-    printArray(A, n); 
-  
-    mergeSort(A, 0, n-1); 
-  
-    printf("\nSorted array is \n"); 
-    printArray(A, n); 
-    return 0; 
-} 
+int main()
+{
+    int A[] = {2, 6, 8, 5, 4, 3};
+    int n = sizeof(A)/sizeof(A[0]);
+
+    printf("Given array is \n");
+    printArray(A, n);
+
+    mergeSort(A, 0, n-1);
+
+    printf("\nSorted array is \n");
+    printArray(A, n);
+    return 0;
+}
